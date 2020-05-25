@@ -1,11 +1,11 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import {ReduxNavigationContainer} from '../../navigation';
 import LoginStack from './LoginStack';
 
 const AppNavigator = () => (
-  <NavigationContainer>
+  <ReduxNavigationContainer>
     <LoginStack />
-  </NavigationContainer>
+  </ReduxNavigationContainer>
 );
 
 export default AppNavigator;
