@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>793470630367-m6067e83k20qbgub0ue325a6dkr2vbem.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.793470630367-m6067e83k20qbgub0ue325a6dkr2vbem</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>793470630367-8o35ofmmp31j2olrklirf15lih68ic3i.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBZHCNNBO5PgTqSOSa3Bvy_7F7Zr6TwLLg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>793470630367</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.awapps.fitx</string>
+	<key>PROJECT_ID</key>
+	<string>fitx-42a30</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fitx-42a30.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:793470630367:ios:3ae08f43df560cddba2c6a</string>
+	<key>DATABASE_URL</key>
+	<string>https://fitx-42a30.firebaseio.com</string>
+</dict>
+</plist>

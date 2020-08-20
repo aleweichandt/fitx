@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.fitx">
+  package="com.awapps.fitx">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

@@ -1,4 +1,4 @@
-package com.fitx;
+package com.awapps.fitx;
 
 import com.facebook.react.ReactActivity;
 
