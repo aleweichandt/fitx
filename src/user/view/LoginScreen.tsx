@@ -1,6 +1,14 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Button, Text} from 'react-native';
 import styled from 'styled-components/native';
+import {User} from '../model';
+
+type Props = {
+  user: User | undefined;
+  locked: boolean;
+  onLogin: () => void;
+  onLogout: () => void;
+};
 
 const Container = styled.View`
   background-color: ${(props) => props.theme.color.primary};
@@ -9,9 +17,16 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const LoginScreen = () => (
+const LoginScreen = ({user, locked, onLogin, onLogout}: Props) => (
   <Container>
-    <Text>Login</Text>
+    {user != null ? (
+      <>
+        <Text>{user}</Text>
+        <Button disabled={locked} onPress={onLogout} title="Logout" />
+      </>
+    ) : (
+      <Button disabled={locked} onPress={onLogin} title="Login" />
+    )}
   </Container>
 );
 
