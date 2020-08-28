@@ -1,7 +1,13 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {eventChannel} from 'redux-saga';
 import {call, put, spawn, take, takeLatest} from 'redux-saga/effects';
-import {loginError, loginSuccess, LOGIN_REQUEST, LOGOUT} from './actions';
+import {
+  loginError,
+  loginSuccess,
+  LOGIN_REQUEST,
+  LOGOUT,
+} from '../../login/model/actions';
+import {setUser, User} from '../../user';
 
 const fbAuth = auth();
 
@@ -18,14 +24,16 @@ const authStatusChannel = () =>
 function* listenLoginStatus() {
   const channel = yield call(authStatusChannel);
   while (true) {
-    const user: FirebaseAuthTypes.User = yield take(channel);
-    yield put(loginSuccess(user.uid));
+    const firebaseUser: FirebaseAuthTypes.User = yield take(channel);
+    const user: User = {uuid: firebaseUser.uid};
+    yield put(setUser(user));
   }
 }
 
 function* login() {
   try {
     yield call([fbAuth, fbAuth.signInAnonymously]);
+    yield put(loginSuccess());
   } catch (e) {
     yield put(loginError(e));
   }
@@ -33,6 +41,7 @@ function* login() {
 
 function* logout() {
   yield call([fbAuth, fbAuth.signOut]);
+  yield put(setUser(undefined));
 }
 
 function* watchUserActions() {

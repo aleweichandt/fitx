@@ -1,60 +1,18 @@
 import {createReducer} from '../../redux-helpers';
-import {
-  LoginErrorAction,
-  LoginRequestAction,
-  LoginSuccessAction,
-  LOGIN_ERROR,
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGOUT,
-  LogoutAction,
-} from './actions';
+import {SetUser, SET_USER} from './actions';
 import {State} from './types';
 
 export const initialState: State = {
   loggedUser: undefined,
-  loggingIn: false,
-  error: undefined,
 };
 
-const handleLoginRequest = (
-  state: State,
-  action: LoginRequestAction, // eslint-disable-line @typescript-eslint/no-unused-vars
-): State => ({
+export const handleSetUser = (state: State, action: SetUser): State => ({
   ...state,
-  loggingIn: true,
-  error: undefined,
-});
-
-const handleLoginSuccess = (
-  state: State,
-  action: LoginSuccessAction,
-): State => ({
-  ...state,
-  loggingIn: false,
   loggedUser: action.payload,
-  error: undefined,
-});
-
-const handleLoginError = (state: State, action: LoginErrorAction): State => ({
-  ...state,
-  loggingIn: false,
-  error: action.payload,
-});
-
-const handleLogout = (
-  state: State,
-  action: LogoutAction, // eslint-disable-line @typescript-eslint/no-unused-vars
-): State => ({
-  ...state,
-  loggedUser: undefined,
 });
 
 const handlers = Object.freeze({
-  [LOGIN_REQUEST]: handleLoginRequest,
-  [LOGIN_SUCCESS]: handleLoginSuccess,
-  [LOGIN_ERROR]: handleLoginError,
-  [LOGOUT]: handleLogout,
+  [SET_USER]: handleSetUser,
 });
 
 export default createReducer<State>(handlers, initialState);

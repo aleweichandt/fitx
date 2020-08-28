@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Text} from 'react-native';
 import styled from 'styled-components/native';
-import {User} from '../model';
+import {User} from '../../user';
 
 type Props = {
   user: User | undefined;
@@ -19,13 +19,13 @@ const Container = styled.View`
 
 const LoginScreen = ({user, locked, onLogin, onLogout}: Props) => (
   <Container>
-    {user != null ? (
+    {!user ? (
+      <Button disabled={locked} onPress={onLogin} title="Login" />
+    ) : (
       <>
-        <Text>{user}</Text>
+        <Text>{user.uuid}</Text>
         <Button disabled={locked} onPress={onLogout} title="Logout" />
       </>
-    ) : (
-      <Button disabled={locked} onPress={onLogin} title="Login" />
     )}
   </Container>
 );

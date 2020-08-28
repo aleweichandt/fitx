@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {loggedUser, loggingIn, loginRequest, logout} from '../model';
+import {loggedUser} from '../../user';
+import {loggingIn, loginRequest, logout} from '../model';
 import LoginScreen from '../view/LoginScreen';
 
 const UserLoginScreen = () => {

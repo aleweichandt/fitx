@@ -9,8 +9,3 @@ export const loggedUser: (
   getUserState,
   ({loggedUser: user}) => user,
 );
-
-export const loggingIn: (state: StateWithUserType) => boolean = createSelector(
-  getUserState,
-  ({loggingIn: status}) => status,
-);
