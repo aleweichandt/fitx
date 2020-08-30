@@ -1,0 +1,194 @@
+{
+	// Place your fitx workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Package index": {
+		"scope": "typescript",
+		"prefix": "pkgindex",
+		"body": [
+			"export * from './container';",
+			"export * from './model';",
+			"",
+		],
+		"description": "Package index"
+	},
+	"View index": {
+		"scope": "typescript",
+		"prefix": "viewindex",
+		"body": [
+			"export { default as ${1:View} } from './${1:View}'",
+			"",
+		],
+		"description": "View index"
+	},
+	"View template": {
+		"scope": "typescript",
+		"prefix": "view",
+		"body": [
+			"import React from 'react';",
+			"import styled from 'styled-components/native';",
+			"",
+			"type Props = {};",
+			"",
+			"const Container = styled.View``;",
+			"",
+			"const ${1:TM_FILENAME_BASE} = ({}: Props) => (",
+			"	<Container/>",
+			");",
+			"",
+			"export default ${1:TM_FILENAME_BASE};",
+			"",
+		],
+		"description": "React view template"
+	},
+	"Container index": {
+		"scope": "typescript",
+		"prefix": "ctindex",
+		"body": [
+			"export { default as ${1:View} } from ./${1:View}"
+			"",
+		],
+		"description": "Container index"
+	},
+	"Container template": {
+		"scope": "typescript",
+		"prefix": "container",
+		"body": [
+			"import React from 'react';",
+			"import {useDispatch} from 'react-redux';",
+			"import { ${2:View} } from '../view';",
+			"",
+			"type Props = {};",
+			"",
+			"const ${1:TM_FILENAME_BASE} = ({}: Props) => {",
+			" const dispatch = useDispatch();",
+			"	return (",
+			"		<${2:View} dispatch={dispatch} />",
+			"	);",
+			"};"
+			"",
+			"export default ${1:TM_FILENAME_BASE};",
+			"",
+		],
+		"description": "React redux container template"
+	},
+	"Model index": {
+		"scope": "typescript",
+		"prefix": "mdindex",
+		"body": [
+			"export { default as reducer } from './reducer';",
+			"export * from './actions';",
+			"export {default as sagas} from './sagas';",
+			"export * from './selectors';",
+			"export * from './types';",
+			"",
+		],
+		"description": "Model index"
+	},
+	"Model actions": {
+		"scope": "typescript",
+		"prefix": "mdactions",
+		"body": [
+			"import {PayloadAction} from '../../redux-helpers/types';",
+			"",
+			"export const ${2:ACTION} = '${1:MODULE}/${2:ACTION}';",
+			"export type ${3:Action} = PayloadAction<typeof ${2:ACTION}, ${5:type}>;",
+			"",
+			"export const ${4:action} = (payload: ${5:type}): ${3:Action} => ({",
+			"	type: ${2:ACTION},",
+			"	payload,",
+			"});",
+			""
+		],
+		"description": "Model redux actions template"
+	},
+	"Model sagas": {
+		"scope": "typescript",
+		"prefix": "mdsagas",
+		"body": [
+			"import {takeLatest} from 'redux-saga/effects';",
+			"import {${2:ACTION}, ${3:Action}} from './actions';",
+			"",
+			"function* handle${3:Action}Saga(action: ${3:Action}) {",
+			"	//TODO do something",
+			"};",
+			"",
+			"function* watch${1:Module}Actions() {",
+			"	yield takeLatest(${2:ACTION}, handle${3:Action}Saga);",
+			"}",
+			"",
+			"export default [watch${1:Module}Actions];",
+			"",
+		],
+		"description": "Model redux sagas template"
+	},
+	"Model selectors": {
+		"scope": "typescript",
+		"prefix": "mdselectors",
+		"body": [
+			"import {createSelector} from 'reselect';",
+			"import {StateWith${1:Module}Type} from './types';",
+			"",
+			"export const get${1:Module}State = ({${2:module}}: StateWith${1:Module}Type) => ${2:module};",
+			"",
+			"export const ${3:prop}Selector: (state: StateWith${1:Module}Type) => ${4:type} = createSelector(",
+			"	get${1:Module}State,",
+			"	({${3:prop}}) => ${3:prop},",
+			");",
+			"",
+		],
+		"description": "Model redux selectors template"
+	},
+	"Model reducer": {
+		"scope": "typescript",
+		"prefix": "mdreducer",
+		"body": [
+			"import {createReducer} from '../../redux-helpers';",
+			"import {${1:Action}, ${2:ACTION}} from './actions';",
+			"import {State} from './types';",
+			"",
+			"export const initialState: State = {};"
+			"",
+			"export const handle${1:Action} = (",
+			"	state: State,",
+			"	action: ${1:Action},",
+			"): State => ({",
+			"	...state,",
+			"});",
+			"",
+			"const handlers = Object.freeze({",
+			"	[${2:ACTION}]: handle${1:Action},",
+			"});",
+			"",
+			"export default createReducer<State>(handlers, initialState);",
+			"",
+		],
+		"description": "Model redux reducers template"
+	},
+	"Model types": {
+		"scope": "typescript",
+		"prefix": "mdtypes",
+		"body": [
+			"export type State = {};",
+			"",
+			"export type StateWith${1:Module}Type = {",
+			"	${2:module}: State;",
+			"};",
+			"",
+		],
+		"description": "Model redux types template"
+	},
+}
