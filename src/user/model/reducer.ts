@@ -1,18 +1,21 @@
 import {createReducer} from '../../redux-helpers';
-import {SetUser, SET_USER} from './actions';
+import {LoadUserData, LOAD_USER_DATA} from './actions';
 import {State} from './types';
 
 export const initialState: State = {
   loggedUser: undefined,
 };
 
-export const handleSetUser = (state: State, action: SetUser): State => ({
+export const handleLoadUserData = (
+  state: State,
+  action: LoadUserData,
+): State => ({
   ...state,
   loggedUser: action.payload,
 });
 
 const handlers = Object.freeze({
-  [SET_USER]: handleSetUser,
+  [LOAD_USER_DATA]: handleLoadUserData,
 });
 
 export default createReducer<State>(handlers, initialState);

@@ -7,7 +7,7 @@ import {
   LOGIN_REQUEST,
   LOGOUT,
 } from '../../login/model/actions';
-import {setUser, User} from '../../user';
+import {setUser} from '../../user';
 
 const fbAuth = auth();
 
@@ -25,8 +25,7 @@ function* listenLoginStatus() {
   const channel = yield call(authStatusChannel);
   while (true) {
     const firebaseUser: FirebaseAuthTypes.User = yield take(channel);
-    const user: User = {uuid: firebaseUser.uid};
-    yield put(setUser(user));
+    yield put(setUser(firebaseUser.uid));
   }
 }
 

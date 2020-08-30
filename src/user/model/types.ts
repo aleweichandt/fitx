@@ -1,5 +1,18 @@
+export type UserId = string;
+
+export type Gender = 'male' | 'female' | 'other';
+
+export type UserMetrics = {
+  age: number;
+  gender: Gender;
+  weight: number; //grams
+  height: number; //centimeters
+};
+
 export type User = {
-  uuid: string;
+  uuid: UserId;
+  name: string | undefined;
+  metrics: UserMetrics | undefined;
 };
 
 export type State = {
