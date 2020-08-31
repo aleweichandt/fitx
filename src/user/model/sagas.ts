@@ -1,8 +1,17 @@
 import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
-import {call, put, takeLatest} from 'redux-saga/effects';
-import {loadUserData, SetUser, SET_USER} from './actions';
+import {call, put, select, takeEvery, takeLatest} from 'redux-saga/effects';
+import {
+  loadUserData,
+  SetUser,
+  SET_METRICS,
+  SET_USER,
+  SET_USERNAME,
+  storeUserData,
+  STORE_USER_DATA,
+} from './actions';
+import {loggedUser} from './selectors';
 import {User} from './types';
 
 const USER_COLLECTION = 'users';
@@ -31,8 +40,22 @@ function* handleSetUserSaga({payload: uuid}: SetUser) {
   }
 }
 
+function* handleStoreUserSaga() {
+  const user: User | undefined = yield select(loggedUser);
+  if (user) {
+    const doc = usersTable.doc(user.uuid);
+    yield call([doc, doc.set], user);
+  }
+}
+
+function* triggerBackup() {
+  yield put(storeUserData());
+}
+
 function* watchUserActions() {
   yield takeLatest(SET_USER, handleSetUserSaga);
+  yield takeLatest(STORE_USER_DATA, handleStoreUserSaga);
+  yield takeEvery([SET_USERNAME, SET_METRICS], triggerBackup);
 }
 
 export default [watchUserActions];
