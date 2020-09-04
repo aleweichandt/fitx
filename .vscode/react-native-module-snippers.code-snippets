@@ -35,8 +35,8 @@
 		"description": "View index"
 	},
 	"View template": {
-		"scope": "typescript",
-		"prefix": "view",
+		"scope": "typescriptreact",
+		"prefix": "reactcomponent",
 		"body": [
 			"import React from 'react';",
 			"import styled from 'styled-components/native';",
@@ -64,8 +64,8 @@
 		"description": "Container index"
 	},
 	"Container template": {
-		"scope": "typescript",
-		"prefix": "container",
+		"scope": "typescriptreact",
+		"prefix": "reactcontainer",
 		"body": [
 			"import React from 'react';",
 			"import {useDispatch} from 'react-redux';",
