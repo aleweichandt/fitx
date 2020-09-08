@@ -10,3 +10,10 @@ export const getDispatcher: (
   getNavigationState,
   ({dispatch}) => dispatch,
 );
+
+export const currentScreen: (
+  state: StateWithNavigationType,
+) => string = createSelector(
+  getNavigationState,
+  ({currentScreen: screen}) => screen,
+);
