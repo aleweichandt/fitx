@@ -6,7 +6,9 @@ import rootSaga from './model/sagas';
 import AppNavigator from './nav/AppNavigator';
 
 const App = () => {
-  useEffect(() => runSaga(rootSaga), []);
+  useEffect(() => {
+    runSaga(rootSaga);
+  }, []);
   return (
     <Provider store={store}>
       <ThemeProvider>
