@@ -1,11 +1,16 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {ReduxNavigationContainer} from '../../navigation';
-import LoginStack from './LoginStack';
+import {isLoggedIn} from '../../user';
+import RootStack from './RootStack';
 
-const AppNavigator = () => (
-  <ReduxNavigationContainer>
-    <LoginStack />
-  </ReduxNavigationContainer>
-);
+const AppNavigator = () => {
+  const hasUser = useSelector(isLoggedIn);
+  return (
+    <ReduxNavigationContainer>
+      <RootStack isLoggedIn={hasUser} />
+    </ReduxNavigationContainer>
+  );
+};
 
 export default AppNavigator;

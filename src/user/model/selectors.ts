@@ -9,3 +9,8 @@ export const loggedUser: (
   getUserState,
   ({loggedUser: user}) => user,
 );
+
+export const isLoggedIn: (state: StateWithUserType) => boolean = createSelector(
+  loggedUser,
+  (user: User | undefined) => !!user,
+);

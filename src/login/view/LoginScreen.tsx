@@ -1,13 +1,10 @@
 import React from 'react';
-import {Button, Text} from 'react-native';
+import {Button} from 'react-native';
 import styled from 'styled-components/native';
-import {User} from '../../user';
 
 type Props = {
-  user: User | undefined;
   locked: boolean;
   onLogin: () => void;
-  onLogout: () => void;
 };
 
 const Container = styled.View`
@@ -17,16 +14,9 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const LoginScreen = ({user, locked, onLogin, onLogout}: Props) => (
+const LoginScreen = ({locked, onLogin}: Props) => (
   <Container>
-    {!user ? (
-      <Button disabled={locked} onPress={onLogin} title="Login" />
-    ) : (
-      <>
-        <Text>{user.uuid}</Text>
-        <Button disabled={locked} onPress={onLogout} title="Logout" />
-      </>
-    )}
+    <Button disabled={locked} onPress={onLogin} title="Login" />
   </Container>
 );
 
