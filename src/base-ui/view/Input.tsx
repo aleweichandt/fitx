@@ -1,10 +1,14 @@
 import styled from 'styled-components/native';
 
 const Input = styled.TextInput`
-  background-color:  ${(props) => props.theme.color.secondary};
-  color:  ${(props) => props.theme.color.onSecondary};
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: ${(props) => props.theme.color.secondary};
+  background-color: ${(props) => props.theme.color.surface};
+  color: ${(props) => props.theme.color.onSurface};
   width: 100%;
-  padding ${(props) => props.theme.spacing}px;
+  margin: ${(props) => props.theme.smallSpacing}px;
+  padding: ${(props) => props.theme.smallSpacing}px;
   text-align: center;
 `;
 

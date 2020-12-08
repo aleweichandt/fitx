@@ -6,7 +6,7 @@ const Layout = styled.View`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding ${(props) => props.theme.spacing}px;
+  padding: ${(props) => props.theme.spacing}px;
 `;
 
 export default Layout;
