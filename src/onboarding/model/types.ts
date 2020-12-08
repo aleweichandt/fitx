@@ -1,5 +1,7 @@
+export type Step = 'username' | 'metrics' | 'done';
+
 export type State = {
-  step: 'username' | 'metrics' | 'done';
+  step: Step;
 };
 
 export type StateWithOnboardingType = {

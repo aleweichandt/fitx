@@ -6,7 +6,9 @@ type Props = {
   onSubmitUsername: (usernae: string) => void;
 };
 
-const Container = styled(Layout)``;
+const Container = styled(Layout)`
+  justify-content: flex-start;
+`;
 
 const SetUsernameStep = ({onSubmitUsername}: Props) => {
   const [username, setUsername] = useState('');
