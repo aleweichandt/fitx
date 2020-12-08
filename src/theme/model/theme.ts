@@ -8,6 +8,7 @@ declare module 'styled-components' {
       onPrimary: string;
       onSecondary: string;
     };
+    spacing: number;
   }
 }
 
@@ -18,6 +19,7 @@ const theme: DefaultTheme = {
     onPrimary: '#000000',
     onSecondary: '#000000',
   },
+  spacing: 16,
 };
 
 export default theme;
