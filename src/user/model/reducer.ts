@@ -5,7 +5,7 @@ import {
   SetMetrics,
   SetUsername,
   SET_METRICS,
-  SET_USER,
+  SET_USERNAME,
 } from './actions';
 import {State, User} from './types';
 
@@ -42,7 +42,7 @@ export const handleSetMetrics = (state: State, action: SetMetrics): State => ({
 
 const handlers = Object.freeze({
   [LOAD_USER_DATA]: handleLoadUserData,
-  [SET_USER]: handleSetUsername,
+  [SET_USERNAME]: handleSetUsername,
   [SET_METRICS]: handleSetMetrics,
 });
 
