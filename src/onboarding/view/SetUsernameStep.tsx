@@ -1,14 +1,9 @@
 import React, {useCallback, useState} from 'react';
-import styled from 'styled-components/native';
 import {Button, Headline, Input, Layout, Paragraph} from '../../base-ui';
 
 type Props = {
   onSubmitUsername: (usernae: string) => void;
 };
-
-const Container = styled(Layout)`
-  justify-content: flex-start;
-`;
 
 const SetUsernameStep = ({onSubmitUsername}: Props) => {
   const [username, setUsername] = useState('');
@@ -17,7 +12,7 @@ const SetUsernameStep = ({onSubmitUsername}: Props) => {
     username,
   ]);
   return (
-    <Container>
+    <Layout>
       <Headline>Welcome to FitX</Headline>
       <Paragraph>Before we start, how should we call you?</Paragraph>
       <Input
@@ -27,7 +22,7 @@ const SetUsernameStep = ({onSubmitUsername}: Props) => {
         onChangeText={setUsername}
       />
       <Button title="Continue" onPress={onPress} />
-    </Container>
+    </Layout>
   );
 };
 
