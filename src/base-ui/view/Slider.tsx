@@ -1,12 +1,7 @@
-import NativeSlider, {SliderProps} from '@react-native-community/slider';
-import React from 'react';
+import styled from 'styled-components/native';
 
-const baseStyle = {
-  width: '100%',
-};
-
-const Slider = ({style, ...props}: SliderProps) => (
-  <NativeSlider {...props} style={{...baseStyle, ...style}} />
-);
+const Slider = styled.Slider`
+  width: 100%;
+`;
 
 export default Slider;
