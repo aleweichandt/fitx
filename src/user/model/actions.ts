@@ -17,7 +17,10 @@ export const SET_USERNAME = 'USER/SET_USERNAME';
 export type SetUsername = PayloadAction<typeof SET_USERNAME, string>;
 
 export const SET_METRICS = 'USER/SET_METRICS';
-export type SetMetrics = PayloadAction<typeof SET_METRICS, UserMetrics>;
+export type SetMetrics = PayloadAction<
+  typeof SET_METRICS,
+  Partial<UserMetrics>
+>;
 
 export const setUser = (payload: UserId | undefined): SetUser => ({
   type: SET_USER,
@@ -38,7 +41,7 @@ export const setUsername = (payload: string): SetUsername => ({
   payload,
 });
 
-export const setMetrics = (payload: UserMetrics): SetMetrics => ({
+export const setMetrics = (payload: Partial<UserMetrics>): SetMetrics => ({
   type: SET_METRICS,
   payload,
 });

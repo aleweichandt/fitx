@@ -7,7 +7,7 @@ import {
   SET_METRICS,
   SET_USERNAME,
 } from './actions';
-import {State, User} from './types';
+import {State, User, UserMetrics} from './types';
 
 export const initialState: State = {
   loggedUser: undefined,
@@ -21,24 +21,28 @@ export const handleLoadUserData = (
   loggedUser: action.payload,
 });
 
-export const handleSetUsername = (
-  state: State,
-  action: SetUsername,
-): State => ({
-  ...state,
-  loggedUser: {
-    ...state.loggedUser,
-    name: action.payload,
-  } as User,
-});
+export const handleSetUsername = (state: State, action: SetUsername): State => {
+  const loggedUser: Partial<User> = state.loggedUser || {};
+  return {
+    ...state,
+    loggedUser: {
+      ...loggedUser,
+      name: action.payload,
+    } as User,
+  };
+};
 
-export const handleSetMetrics = (state: State, action: SetMetrics): State => ({
-  ...state,
-  loggedUser: {
-    ...state.loggedUser,
-    metrics: action.payload,
-  } as User,
-});
+export const handleSetMetrics = (state: State, action: SetMetrics): State => {
+  const loggedUser: Partial<User> = state.loggedUser || {};
+  const metrics: Partial<UserMetrics> = loggedUser.metrics || {};
+  return {
+    ...state,
+    loggedUser: {
+      ...loggedUser,
+      metrics: {...metrics, ...action.payload},
+    } as User,
+  };
+};
 
 const handlers = Object.freeze({
   [LOAD_USER_DATA]: handleLoadUserData,
