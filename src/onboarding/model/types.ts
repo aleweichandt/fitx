@@ -1,9 +1,3 @@
-export type Step = 'username' | 'metrics' | 'done';
+export type Step = 'username' | 'gender' | 'metrics' | 'done';
 
-export type State = {
-  step: Step;
-};
-
-export type StateWithOnboardingType = {
-  onboarding: State;
-};
+export type Limit = {max: number; min: number; step: number};
