@@ -1,5 +1,12 @@
 import React, {useCallback, useState} from 'react';
-import {Button, Headline, Layout, Paragraph, Slider} from '../../base-ui';
+import {
+  Button,
+  Choice,
+  Headline,
+  Layout,
+  Paragraph,
+  Slider,
+} from '../../base-ui';
 import {Gender, UserMetrics} from '../../user';
 import {Limit} from '../model';
 
@@ -31,6 +38,11 @@ const SetGenderStep = ({
       </Headline>
       <Paragraph>How you define yourself?</Paragraph>
       <Paragraph>{gender}</Paragraph>
+      <Choice
+        values={['male', 'female', 'other']}
+        selected={gender}
+        onValueSelected={setGender}
+      />
       <Paragraph>How old are you?</Paragraph>
       <Paragraph>{age} years old</Paragraph>
       <Slider
