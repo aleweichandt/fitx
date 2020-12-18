@@ -5,7 +5,7 @@ import Mock from '../MockScreen';
 const Home = createStackNavigator();
 
 const HomeStack = () => (
-  <Home.Navigator initialRouteName="onboardingName">
+  <Home.Navigator initialRouteName="main">
     <Home.Screen name="main" component={Mock} />
   </Home.Navigator>
 );
