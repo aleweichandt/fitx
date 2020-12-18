@@ -10,4 +10,8 @@ export const strResources: Record<LocalizationLang, LocalizationResource> = {
     login: 'Login',
     logout: 'Logout',
   },
+  es: {
+    login: 'Conectarme',
+    logout: 'Desconectarme',
+  },
 };
