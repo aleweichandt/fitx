@@ -2,6 +2,8 @@ import React, {useCallback, useState} from 'react';
 import {Button, Headline, Layout, Paragraph, Slider} from '../../base-ui';
 import {UserMetrics} from '../../user';
 import {Limit} from '../model';
+import {useTranslation} from '../../localization';
+import {STR_ONBOARDING_NS} from '../localization';
 
 type Props = {
   weightLimit?: Limit;
@@ -17,6 +19,7 @@ const SetMetricsStep = ({
   heightLimit = defaultHeightLimit,
   onSubmitMetrics,
 }: Props) => {
+  const {t} = useTranslation(STR_ONBOARDING_NS);
   const [weight, setWeight] = useState(weightLimit.min);
   const [height, setHeight] = useState(heightLimit.min);
   const onSubmit = useCallback(
@@ -29,27 +32,24 @@ const SetMetricsStep = ({
   );
   return (
     <Layout>
-      <Headline>
-        Nice one! Now please answer the following questions so we know you
-        better
-      </Headline>
-      <Paragraph>How much you weight?</Paragraph>
-      <Paragraph>{weight / 100} kgs</Paragraph>
+      <Headline>{t('metrics_step_title')}</Headline>
+      <Paragraph>{t('set_weight_subtitle')}</Paragraph>
+      <Paragraph>{t('weight_units', {weight: weight / 100})}</Paragraph>
       <Slider
         step={weightLimit.step}
         minimumValue={weightLimit.min}
         maximumValue={weightLimit.max}
         onValueChange={setWeight}
       />
-      <Paragraph>What about your height?</Paragraph>
-      <Paragraph>{height / 100} mts</Paragraph>
+      <Paragraph>{t('set_height_subtitle')}</Paragraph>
+      <Paragraph>{t('height_units', {height: height / 100})}</Paragraph>
       <Slider
         step={heightLimit.step}
         minimumValue={heightLimit.min}
         maximumValue={heightLimit.max}
         onValueChange={setHeight}
       />
-      <Button title="Continue" onPress={onSubmit} />
+      <Button title={t('continue')} onPress={onSubmit} />
     </Layout>
   );
 };

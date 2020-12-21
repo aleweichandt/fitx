@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-type Props = {
-  values: string[];
-  selected: string;
-  onValueSelected: (value: string) => void;
+type Props<T extends string> = {
+  values: T[];
+  t: (key: T) => string;
+  selected: T;
+  onValueSelected: (value: T) => void;
 };
 
 const Container = styled.View`
@@ -16,12 +17,17 @@ const Container = styled.View`
 `;
 const Option = styled.Button``;
 
-const Choice = ({values, selected, onValueSelected}: Props) => {
+const Choice = <T extends string>({
+  values,
+  t,
+  selected,
+  onValueSelected,
+}: Props<T>) => {
   return (
     <Container>
-      {values.map((value) => (
+      {values.map((value: T) => (
         <Option
-          title={value}
+          title={t(value)}
           onPress={() => onValueSelected(value)}
           disabled={selected === value}
         />

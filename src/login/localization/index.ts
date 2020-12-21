@@ -5,7 +5,7 @@ import {
 
 export const STR_LOGIN_NS = 'STR/LOGIN';
 
-export const strResources: Record<LocalizationLang, LocalizationResource> = {
+export const strings: Record<LocalizationLang, LocalizationResource> = {
   en: {
     login: 'Login',
     logout: 'Logout',

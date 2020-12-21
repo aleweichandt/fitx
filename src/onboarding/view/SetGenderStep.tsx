@@ -1,4 +1,5 @@
 import React, {useCallback, useState} from 'react';
+import {useTranslation} from '../../localization';
 import {
   Button,
   Choice,
@@ -9,6 +10,7 @@ import {
 } from '../../base-ui';
 import {Gender, UserMetrics} from '../../user';
 import {Limit} from '../model';
+import {STR_ONBOARDING_NS} from '../localization';
 
 type Props = {
   ageLimit?: Limit;
@@ -21,6 +23,7 @@ const SetGenderStep = ({
   ageLimit = defaultAgeLimit,
   onSubmitMetrics,
 }: Props) => {
+  const {t} = useTranslation(STR_ONBOARDING_NS);
   const [gender, setGender] = useState<Gender>('male');
   const [age, setAge] = useState(ageLimit.min);
   const onSubmit = useCallback(
@@ -33,25 +36,24 @@ const SetGenderStep = ({
   );
   return (
     <Layout>
-      <Headline>
-        Welcome! Before we start please fill the following info below
-      </Headline>
-      <Paragraph>How you define yourself?</Paragraph>
-      <Paragraph>{gender}</Paragraph>
+      <Headline>{t('gender_step_title')}</Headline>
+      <Paragraph>{t('set_gender_subtitle')}</Paragraph>
+      <Paragraph>{t(gender)}</Paragraph>
       <Choice
+        t={t}
         values={['male', 'female', 'other']}
         selected={gender}
         onValueSelected={setGender}
       />
-      <Paragraph>How old are you?</Paragraph>
-      <Paragraph>{age} years old</Paragraph>
+      <Paragraph>{t('set_age_subtitle')}</Paragraph>
+      <Paragraph>{t('age_units', {age})}</Paragraph>
       <Slider
         step={ageLimit.step}
         minimumValue={ageLimit.min}
         maximumValue={ageLimit.max}
         onValueChange={setAge}
       />
-      <Button title="Continue" onPress={onSubmit} />
+      <Button title={t('continue')} onPress={onSubmit} />
     </Layout>
   );
 };
