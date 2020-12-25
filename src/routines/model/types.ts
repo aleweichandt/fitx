@@ -1,4 +1,4 @@
-import {UserId} from 'src/user';
+import {UserUuid} from '../../user';
 
 export type ExerciseUuid = string;
 
@@ -18,8 +18,8 @@ export type DaysPerWeek = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export type Routine = {
   uuid: RoutineUuid;
-  trainerUuid: UserId;
-  traineeUuid: UserId;
+  trainerUuid: UserUuid;
+  traineeUuid: UserUuid;
   name: string;
   description: string;
   type: RoutineType;

@@ -1,8 +1,8 @@
 import {Action, PayloadAction} from '../../redux-helpers/types';
-import {User, UserId, UserMetrics} from './types';
+import {User, UserUuid, UserMetrics} from './types';
 
 export const SET_USER = 'USER/SET_USER';
-export type SetUser = PayloadAction<typeof SET_USER, UserId | undefined>;
+export type SetUser = PayloadAction<typeof SET_USER, UserUuid | undefined>;
 
 export const LOAD_USER_DATA = 'USER/LOAD_USER_DATA';
 export type LoadUserData = PayloadAction<
@@ -22,7 +22,7 @@ export type SetMetrics = PayloadAction<
   Partial<UserMetrics>
 >;
 
-export const setUser = (payload: UserId | undefined): SetUser => ({
+export const setUser = (payload: UserUuid | undefined): SetUser => ({
   type: SET_USER,
   payload,
 });

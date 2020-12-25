@@ -1,4 +1,4 @@
-export type UserId = string;
+export type UserUuid = string;
 
 export type Gender = 'male' | 'female' | 'other';
 
@@ -10,7 +10,7 @@ export type UserMetrics = {
 };
 
 export type User = {
-  uuid: UserId;
+  uuid: UserUuid;
   name: string | undefined;
   metrics: UserMetrics | undefined;
 };

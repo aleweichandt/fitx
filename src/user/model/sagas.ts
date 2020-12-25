@@ -1,7 +1,5 @@
-import firestore, {
-  FirebaseFirestoreTypes,
-} from '@react-native-firebase/firestore';
 import {call, put, select, takeEvery, takeLatest} from 'redux-saga/effects';
+import {fetchUser, storeUser} from '../service';
 import {
   loadUserData,
   SetUser,
@@ -14,25 +12,11 @@ import {
 import {loggedUser} from './selectors';
 import {User} from './types';
 
-const USER_COLLECTION = 'users';
-
-const db = firestore();
-const usersTable = db.collection(USER_COLLECTION);
-
 function* handleSetUserSaga({payload: uuid}: SetUser) {
   if (uuid) {
     let user: User = {uuid, metrics: undefined, name: undefined};
     try {
-      const doc = usersTable.doc(uuid);
-      const result: FirebaseFirestoreTypes.DocumentSnapshot = yield call([
-        doc,
-        doc.get,
-      ]);
-      if (result.exists) {
-        user = result.data() as User;
-      } else {
-        throw Error('new user');
-      }
+      user = yield call(fetchUser, uuid);
     } catch (e) {}
     yield put(loadUserData(user));
   } else {
@@ -43,8 +27,7 @@ function* handleSetUserSaga({payload: uuid}: SetUser) {
 function* handleStoreUserSaga() {
   const user: User | undefined = yield select(loggedUser);
   if (user) {
-    const doc = usersTable.doc(user.uuid);
-    yield call([doc, doc.set], user);
+    yield call(storeUser, user);
   }
 }
 
