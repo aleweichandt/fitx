@@ -36,8 +36,8 @@ const SetGenderStep = ({
   );
   return (
     <Layout>
-      <Headline>{t('gender_step_title')}</Headline>
-      <Paragraph>{t('set_gender_subtitle')}</Paragraph>
+      <Headline>{t('genderStepTitle')}</Headline>
+      <Paragraph>{t('setGenderSubtitle')}</Paragraph>
       <Paragraph>{t(gender)}</Paragraph>
       <Choice
         t={t}
@@ -45,8 +45,8 @@ const SetGenderStep = ({
         selected={gender}
         onValueSelected={setGender}
       />
-      <Paragraph>{t('set_age_subtitle')}</Paragraph>
-      <Paragraph>{t('age_units', {age})}</Paragraph>
+      <Paragraph>{t('setAgeSubtitle')}</Paragraph>
+      <Paragraph>{t('ageUnits', {count: age})}</Paragraph>
       <Slider
         step={ageLimit.step}
         minimumValue={ageLimit.min}

@@ -12,7 +12,7 @@ type Props = {
 };
 
 const defaultWeightLimit: Limit = {max: 20000, min: 4000, step: 50};
-const defaultHeightLimit: Limit = {max: 230, min: 110, step: 1};
+const defaultHeightLimit: Limit = {max: 230, min: 100, step: 1};
 
 const SetMetricsStep = ({
   weightLimit = defaultWeightLimit,
@@ -32,17 +32,17 @@ const SetMetricsStep = ({
   );
   return (
     <Layout>
-      <Headline>{t('metrics_step_title')}</Headline>
-      <Paragraph>{t('set_weight_subtitle')}</Paragraph>
-      <Paragraph>{t('weight_units', {weight: weight / 100})}</Paragraph>
+      <Headline>{t('metricsStepTitle')}</Headline>
+      <Paragraph>{t('setWeightSubtitle')}</Paragraph>
+      <Paragraph>{t('weightUnits', {count: weight / 100})}</Paragraph>
       <Slider
         step={weightLimit.step}
         minimumValue={weightLimit.min}
         maximumValue={weightLimit.max}
         onValueChange={setWeight}
       />
-      <Paragraph>{t('set_height_subtitle')}</Paragraph>
-      <Paragraph>{t('height_units', {height: height / 100})}</Paragraph>
+      <Paragraph>{t('setHeightSubtitle')}</Paragraph>
+      <Paragraph>{t('heightUnits', {count: height / 100})}</Paragraph>
       <Slider
         step={heightLimit.step}
         minimumValue={heightLimit.min}

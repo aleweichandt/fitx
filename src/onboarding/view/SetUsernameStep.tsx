@@ -16,8 +16,8 @@ const SetUsernameStep = ({onSubmitUsername}: Props) => {
   ]);
   return (
     <Layout>
-      <Headline>{t('welcome_onboard')}</Headline>
-      <Paragraph>{t('set_username_subtitle')}</Paragraph>
+      <Headline>{t('welcomeOnboard')}</Headline>
+      <Paragraph>{t('setUsernameSubtitle')}</Paragraph>
       <Input
         value={username}
         autoCompleteType="username"
