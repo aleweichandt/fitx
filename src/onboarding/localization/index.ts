@@ -1,11 +1,8 @@
-import {
-  LocalizationLang,
-  LocalizationResource,
-} from 'src/localization/model/types';
+import {addResource} from '../../localization';
 
 export const STR_ONBOARDING_NS = 'STR/ONBOARDING';
 
-export const strings: Record<LocalizationLang, LocalizationResource> = {
+addResource(STR_ONBOARDING_NS, {
   en: {
     welcome_onboard: 'Welcome to FitX',
     set_username_subtitle: 'Before we start, how should we call you?',
@@ -43,4 +40,4 @@ export const strings: Record<LocalizationLang, LocalizationResource> = {
     set_height_subtitle: '¿Y Cuanto mides?',
     height_units: '{{height}} mts',
   },
-};
+});

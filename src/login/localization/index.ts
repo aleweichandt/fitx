@@ -1,11 +1,8 @@
-import {
-  LocalizationLang,
-  LocalizationResource,
-} from 'src/localization/model/types';
+import {addResource} from '../../localization';
 
 export const STR_LOGIN_NS = 'STR/LOGIN';
 
-export const strings: Record<LocalizationLang, LocalizationResource> = {
+addResource(STR_LOGIN_NS, {
   en: {
     login: 'Login',
     logout: 'Logout',
@@ -14,4 +11,4 @@ export const strings: Record<LocalizationLang, LocalizationResource> = {
     login: 'Conectarme',
     logout: 'Desconectarme',
   },
-};
+});

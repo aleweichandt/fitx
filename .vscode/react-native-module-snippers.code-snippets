@@ -21,9 +21,25 @@
 		"body": [
 			"export * from './container';",
 			"export * from './model';",
+			"export * from './localization';",
 			"",
 		],
 		"description": "Package index"
+	},
+	"Localization Index": {
+		"scope": "typescript",
+		"prefix": "localeindex",
+		"body": [
+			"import {addResource} from '../../localization';",
+			"",
+			"export const STR_${1:MODULE}_NS = 'STR/${1:MODULE}';",
+			"",
+			"addResource(STR_${1:MODULE}_NS, {",
+			"	en: {},",
+			"	es: {},",
+			"});",
+			""
+		]
 	},
 	"View index": {
 		"scope": "typescript",
@@ -58,7 +74,7 @@
 		"scope": "typescript",
 		"prefix": "ctindex",
 		"body": [
-			"export { default as ${1:View} } from ./${1:View}"
+			"export { default as ${1:View} } from './${1:View}'"
 			"",
 		],
 		"description": "Container index"
