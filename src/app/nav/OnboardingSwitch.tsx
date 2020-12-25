@@ -10,7 +10,7 @@ const NeedsOnboarding = createStackNavigator();
 const OnboardingSwitch = () => {
   const shouldOnboard = useSelector(needsOnboarding);
   return (
-    <NeedsOnboarding.Navigator>
+    <NeedsOnboarding.Navigator screenOptions={{headerShown: false}}>
       {shouldOnboard ? (
         <NeedsOnboarding.Screen name="onboarding" component={OnboardingStack} />
       ) : (

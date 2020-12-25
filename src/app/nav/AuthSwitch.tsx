@@ -10,7 +10,7 @@ const NeedsAuth = createStackNavigator();
 const AuthSwitch = () => {
   const hasUser = useSelector(isLoggedIn);
   return (
-    <NeedsAuth.Navigator>
+    <NeedsAuth.Navigator screenOptions={{headerShown: false}}>
       {hasUser ? (
         <NeedsAuth.Screen name="home" component={OnboardingSwitch} />
       ) : (
