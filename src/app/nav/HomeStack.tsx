@@ -1,13 +1,24 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import React from 'react';
-import Mock from '../MockScreen';
+import React, {useCallback} from 'react';
+import {UserLogoutButton} from '../../login';
+import {UserRoutinesList} from '../../routines';
+// import Mock from '../MockScreen';
 
 const Home = createStackNavigator();
 
-const HomeStack = () => (
-  <Home.Navigator initialRouteName="main">
-    <Home.Screen name="main" component={Mock} />
-  </Home.Navigator>
-);
+const HomeStack = () => {
+  const headerRightLogout = useCallback(() => <UserLogoutButton />, []);
+  return (
+    <Home.Navigator initialRouteName="main">
+      <Home.Screen
+        name="main"
+        component={UserRoutinesList}
+        options={{
+          headerRight: headerRightLogout,
+        }}
+      />
+    </Home.Navigator>
+  );
+};
 
 export default HomeStack;
