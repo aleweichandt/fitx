@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {useDispatch} from 'react-redux';
+import {navigate} from '../../navigation';
 import {Routine, RoutineUuid} from '../model';
 import {RoutineBox} from '../view';
 
@@ -20,7 +22,13 @@ type Props = {
 
 const UserRoutineBox = ({}: Props) => {
   const routine: Routine | undefined = mockRoutine;
-  return <RoutineBox routine={routine} />;
+  const dispatch = useDispatch();
+  const onPress = useCallback(
+    (r: Routine) =>
+      dispatch(navigate('routineExercises', {routineUuid: r.uuid})),
+    [dispatch],
+  );
+  return <RoutineBox routine={routine} onPress={onPress} />;
 };
 
 export default UserRoutineBox;

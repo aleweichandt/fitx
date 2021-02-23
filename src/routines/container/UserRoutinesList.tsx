@@ -6,7 +6,7 @@ import UserRoutineBox from './UserRoutineBox';
 type Props = {};
 
 const UserRoutinesList = ({}: Props) => {
-  const uuids: RoutineUuid[] = ['uuid'];
+  const uuids: RoutineUuid[] = ['uuid', '', '', ' '];
   return <RoutinesList routineUuids={uuids} ItemComponent={UserRoutineBox} />;
 };
 

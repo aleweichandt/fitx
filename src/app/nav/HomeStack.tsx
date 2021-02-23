@@ -1,5 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {useCallback} from 'react';
+import {RoutineExercisesList} from '../../exercises';
 import {UserLogoutButton} from '../../login';
 import {UserRoutinesList} from '../../routines';
 // import Mock from '../MockScreen';
@@ -17,6 +18,7 @@ const HomeStack = () => {
           headerRight: headerRightLogout,
         }}
       />
+      <Home.Screen name="routineExercises" component={RoutineExercisesList} />
     </Home.Navigator>
   );
 };
